@@ -9,7 +9,7 @@ const scenes = Actions.create(
   <Scene key="root">
     <Scene key="login" component={LoginView} initial={true} hideNavBar />
     <Scene key="register" component={RegisterView} />
-    <Scene key="home" component={HomeView} hideNavBar />
+    <Scene key="home" component={HomeView} />
     <Scene key="artistDetail" component={ArtistDetailView} />
   </Scene>
 );

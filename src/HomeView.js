@@ -1,10 +1,26 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+  ActivityIndicator,
+} from "react-native";
+import { Actions } from "react-native-router-flux";
 
 import ArtistList from "./ArtistList";
 import { getMusicData } from "./api-client";
 
 export default class HomeView extends Component<Props> {
+  static navigationOptions = {
+    headerTitle: () => <Text style={styles.headerTop}>Artistas</Text>,
+    headerLeft: () => (
+      <TouchableOpacity onPress={() => Actions.login()}>
+        <Text style={{ marginLeft: 20 }}>Salir</Text>
+      </TouchableOpacity>
+    ),
+  };
+
   state = {
     artists: null,
     loading: true,
@@ -38,11 +54,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#eee",
-    paddingTop: 50,
+    paddingTop: 5,
   },
   loadingCenter: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  headerTop: {
+    fontSize: 15,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
